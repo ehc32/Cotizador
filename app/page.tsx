@@ -77,13 +77,14 @@ export default function ChatPage() {
   const [cotizacionData, setCotizacionData] = useState<CotizacionData | null>(null)
   const [showPdfButton, setShowPdfButton] = useState(false)
   const [answeredQuestions, setAnsweredQuestions] = useState<Set<string>>(new Set())
+  // Used to track which question in the flow is currently active
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [habitacionesCount, setHabitacionesCount] = useState(0)
   const [habitacionActual, setHabitacionActual] = useState(0)
   const [preguntandoBano, setPreguntandoBano] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, stop, status, setInput, append } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, stop, status, append } = useChat({
     api: "/api/chat",
     body: {
       selectedModel,

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { DeployButton } from "./deploy-button";
+// Header component for the app
 
 export const Header = () => {
   return (

@@ -5,21 +5,7 @@ import { streamText, type UIMessage } from "ai"
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30
 
-// Definir el flujo de preguntas en orden estricto
-const PREGUNTAS_FLUJO = [
-  "nombre",
-  "edad",
-  "tipo_proyecto",
-  "metros_cuadrados",
-  "nivel_acabados",
-  "tiempo_estimado",
-  "presupuesto_estimado",
-  "tiene_lote",
-  "habitaciones_adicionales",
-  "habitacion_principal_cama",
-  // Las preguntas de habitaciones adicionales y baños se generan dinámicamente
-  "espacios_adicionales",
-]
+// Orden de preguntas definido en el system prompt
 
 export async function POST(req: Request) {
   const { messages, selectedModel }: { messages: UIMessage[]; selectedModel: modelID } = await req.json()

@@ -194,13 +194,16 @@ export function YesNoOptions({
   onSelect: (value: string) => void
 }) {
   return (
-    <div className="flex space-x-3 mt-2">
-      <Button variant="outline" className="flex-1 py-6" onClick={() => onSelect("Sí")}>
-        <span className="text-lg mr-2">✓</span> Sí
-      </Button>
-      <Button variant="outline" className="flex-1 py-6" onClick={() => onSelect("No")}>
-        <span className="text-lg mr-2">✗</span> No
-      </Button>
+    <div className="flex flex-col space-y-2">
+      <p className="text-sm font-medium text-muted-foreground">{question}</p>
+      <div className="flex space-x-3 mt-2">
+        <Button variant="outline" className="flex-1 py-6" onClick={() => onSelect("Sí")}>
+          <span className="text-lg mr-2">✓</span> Sí
+        </Button>
+        <Button variant="outline" className="flex-1 py-6" onClick={() => onSelect("No")}>
+          <span className="text-lg mr-2">✗</span> No
+        </Button>
+      </div>
     </div>
   )
 }

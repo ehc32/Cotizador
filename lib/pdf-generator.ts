@@ -54,9 +54,8 @@ export const generarPDFCotizacion = async (data: CotizacionData): Promise<Blob> 
   pdfDoc.setFont("helvetica", "bold")
   pdfDoc.text("PROPUESTA ECONÓMICA", 105, 30, { align: "center" })
 
-  // Calcular costos basados en la superficie y precio por metro cuadrado
-  const costoDiseño = Math.round(data.costos.costoDiseño)
-  const costoConstruccion = Math.round(data.costos.costoConstruccion)
+  // Calcular costo total basado en los datos proporcionados
+  // (Los costos individuales ya están calculados en data.costos)
   const costoTotal = Math.round(data.costos.costoTotal)
 
   // Calcular porcentajes para los diferentes servicios
@@ -79,12 +78,12 @@ export const generarPDFCotizacion = async (data: CotizacionData): Promise<Blob> 
   })
 
   // Crear tabla manualmente
-  const drawTable = (startY: number, headers: string[], rows: string[][], title?: string) => {
+  const drawTable = (startY: number, headers: string[], rows: string[][], title?: string): number => {
     const cellWidth = 80
     const cellHeight = 10
-    const margin = 20
+    const margin = 20 // Margen usado para calcular el espacio disponible
     const tableWidth = cellWidth * 2
-    const startX = (pdfDoc.internal.pageSize.width - tableWidth) / 2
+    const startX = margin
 
     // Título si existe
     if (title) {
@@ -124,7 +123,8 @@ export const generarPDFCotizacion = async (data: CotizacionData): Promise<Blob> 
       pdfDoc.text(row[0], startX + 5, rowY + 7)
       pdfDoc.text(row[1], startX + cellWidth - 5, rowY + 7, { align: "right" })
     })
-
+    
+    // Return the position below the table for the next element
     return startY + (rows.length + 1) * cellHeight + 10
   }
 

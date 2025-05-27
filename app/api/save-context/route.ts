@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server"
 
+// Define un tipo específico para el contexto de conversación
+interface ConversationContext {
+  [key: string]: string | number | boolean | object | null | undefined;
+  updatedAt?: string;
+}
+
 // En producción, esto se conectaría a una base de datos
-const conversationContexts: Record<string, any> = {}
+const conversationContexts: Record<string, ConversationContext> = {}
 
 export async function POST(request: Request) {
   try {

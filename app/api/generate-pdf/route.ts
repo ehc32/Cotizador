@@ -3,7 +3,9 @@ import { NextResponse } from "next/server"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { nombreCliente, tipoProyecto, superficie, nivelAcabados, costoTotal, pdfData } = body
+    const { nombreCliente } = body
+    // Estos datos serán utilizados en la implementación real de la generación de PDF
+    // const { tipoProyecto, superficie, nivelAcabados, costoTotal, pdfData } = body
 
     // Aquí iría la lógica real de generación de PDF
     // Por ejemplo, usando una biblioteca como PDFKit o jsPDF

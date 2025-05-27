@@ -19,8 +19,13 @@ export function generateSessionId(): string {
     return sessionId
   }
   
+  // Define una interfaz para el contexto de la conversación
+  export interface ConversationContext {
+    [key: string]: string | number | boolean | object | null | undefined;
+  }
+
   // Función para guardar el contexto de la conversación
-  export async function saveContext(context: any): Promise<boolean> {
+  export async function saveContext(context: ConversationContext): Promise<boolean> {
     try {
       const sessionId = getSessionId()
   
@@ -44,7 +49,7 @@ export function generateSessionId(): string {
   }
   
   // Función para recuperar el contexto de la conversación
-  export async function getContext(): Promise<any> {
+  export async function getContext(): Promise<ConversationContext | null> {
     try {
       const sessionId = getSessionId()
   
