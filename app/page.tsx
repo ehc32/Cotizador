@@ -78,7 +78,8 @@ export default function ChatPage() {
   const [showPdfButton, setShowPdfButton] = useState(false)
   const [answeredQuestions, setAnsweredQuestions] = useState<Set<string>>(new Set())
   // Used to track which question in the flow is currently active
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [, setCurrentQuestionIndex] = useState(0)
   const [habitacionesCount, setHabitacionesCount] = useState(0)
   const [habitacionActual, setHabitacionActual] = useState(0)
   const [preguntandoBano, setPreguntandoBano] = useState(false)

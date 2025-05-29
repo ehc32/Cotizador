@@ -156,7 +156,7 @@ export const generarPDFCotizacion = async (data: CotizacionData): Promise<Blob> 
   )
 
   // Tabla Total
-  currentY = drawTable(
+  drawTable(
     currentY,
     ["", ""],
     [
